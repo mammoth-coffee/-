@@ -1,0 +1,143 @@
+@import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css);
+
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+#contents {
+    overflow-y: scroll;
+    float: left;
+    width: 61%;
+    height: 90% ;
+    background-color: #EEF2F9;
+    /* display: flex; */
+    /* justify-content: center; */
+    /* flex-wrap: wrap; */
+    padding : 30px 20px;
+}
+
+#contents_wrap {
+    height : 100%;
+    margin : 0 4.5%;
+    width : auto;
+    display: flex;
+    flex-direction : column;
+    justify-content: flex-start;
+}
+
+/* html, body {
+    margin: 0;
+    border : 0;
+}
+
+* {
+    font-family: 'NanumSquare', sans-serif;
+    box-sizing: border-box;
+}
+
+.contents {
+    float: left;
+    width: 61vw;
+    height: 90vh ;
+    background-color: #EEF2F9;
+    overflow: auto;
+} */
+
+
+/*콘텐츠 영역*/
+
+.container {
+    width: 740px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    padding-top: 64px;
+  }
+
+.MemoContainer {
+    width: 740px;
+    background-color: white;
+    border-radius: 8px;
+    border: 3px solid #E0E0E0;
+    font-size: 12px;
+
+    margin: 64px auto;
+    padding: 10px;
+}
+
+.TitleInput {
+    display: flex;
+    padding-bottom: 10px;
+}
+
+.MemoTitle,.MemoText {
+    width: 144px;
+    border: none;
+}
+
+.MemoText {
+    resize: none;
+}
+
+.MemoTitle:focus,.MemoText:focus {
+    outline: none;
+}
+
+.MemoBtn {
+    width: 176px;
+    height: 176px;
+    border: 3px dashed #E0E0E0;
+    color: #E0E0E0;
+    background-color: white;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    position: relative;
+    cursor: pointer;
+
+    float: left;
+    z-index: 3;
+}
+
+.MemoBtn:active {
+    background-color: #eeeeee;
+}
+
+
+.preview_container {
+    margin-bottom: 16px;
+    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(4, 2fr);
+    gap: 61px 12px;
+
+    position: relative;
+    bottom: 176px;
+    float: left;
+    z-index: 2;
+
+}
+
+.MemoPreview {
+    position: relative;
+    width: 176px;
+    height: 176px;
+    background-color: white;
+    border-radius: 8px;
+    padding: 16px 16px 0 16px;
+}
+
+.TextInput {
+    height: 90.4px;
+}
+
+.IconContainer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.TrashIcon {
+    margin-left: 5px;
+}
+
+.StarIcon, .TrashIcon {
+    cursor: pointer;
+}

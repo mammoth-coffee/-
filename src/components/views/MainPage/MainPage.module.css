@@ -1,0 +1,248 @@
+#contents {
+    overflow-y: scroll;
+    float: left;
+    width: 61%;
+    height: 90% ;
+    background-color: #EEF2F9;
+    /* display: flex; */
+    /* justify-content: center; */
+    /* flex-wrap: wrap; */
+    padding : 30px 20px;
+}
+
+#contents_wrap {
+    height : 100%;
+    margin : 0 4.5%;
+    width : auto;
+    display: flex;
+    flex-direction : column;
+    justify-content: flex-start;
+}
+
+.recent_folder {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: flex-start; */
+    align-items: flex-start;
+}
+
+.recent_folder_title{
+    font-size: 20px;
+    font-weight: 800;
+    color : #000000;
+}
+
+
+.select_folders {
+    font-size: 16px;
+    font-weight: 700;
+    /* display: flex; */
+    color : #828282;
+    margin-top : 26px;
+}
+
+.select_folders button {
+    border : none;
+    outline: none;
+    background-color: transparent;
+    font-size : 16px;
+    font-weight: 700;
+    color : #828282;
+    cursor: pointer;
+}
+
+.select_folders .clicked {
+    color : #267DFF;
+    text-decoration: underline;
+}
+
+.select_folders span {
+    font-size : 16px;
+    font-weight: 700    ;
+    margin : 15px;
+}
+
+.folderBoard {
+    margin-top : 28px;
+    /* color : #000000; */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    
+}
+
+.folder {
+    position: relative;
+    margin-right: 26px;
+}
+
+.folderContents{
+    position: absolute;
+    /* margin: 36px 8px 0 20px; */
+    width : 100%;
+    padding-left : 20px;
+    top : 0;
+    left : 0;
+    padding-top : 30px;
+    
+}
+
+.folderHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.folderHeader_title {
+    color:#4f4f4f;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.folderHeader_buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-right : 8px;
+}
+
+.Header_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.folderusers {
+    display: flex;
+    flex-direction: row;
+    margin-top: 5px;
+    align-items: center;
+    /* position: relative; */
+}
+
+.userImage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* position: absolute; */
+    
+}
+
+.folderInfo {
+    font-size: 12px;
+    font-weight: 700;
+    color : #4f4f4f;
+    text-align: start;
+}
+
+.folderStart {
+    margin-top : 13px;    
+}
+
+.folderFileNum, .folderRecentChange {
+    margin-top : 6px;
+}
+
+.recent_file {
+    margin-top: 67px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: flex-start; */
+    align-items: flex-start;
+}
+
+
+.recent_file_title {
+    font-size: 20px;
+    font-weight: 800;
+    color : #000000;
+}
+
+.recent_file_list {
+    margin-top : 25px;
+    /* color :teal; */
+    border-radius: 18px;
+    background-color: #ffffff;
+    width : 100%;
+    color : #4f4f4f;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom : 30px;
+    overflow: scroll;
+    max-height: 470px;
+    /* overflow-y: auto; */
+    /* overflow:visible; */
+}
+
+.file_property {
+    width : 100%;
+    height: 50px;
+    display : flex;
+    flex-direction: row;
+    align-items: center;
+    position : relative;
+}
+
+.file_property p {
+    position : absolute;
+}
+
+.file_title_type {
+    left : 19px;
+}
+
+.file_title_uploader {
+    left : 267px;   
+}
+
+.file_title_date {
+    left : 420px;
+}
+
+.file_title_size {
+    left : 566px;
+}
+
+.file_item {
+    width: 100%;
+    height : 70px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position : relative;
+    border-bottom: 1px solid #e0e0e0;
+    box-sizing: content-box;
+}
+
+.file_item span, .file_item button {
+    position : absolute;
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    top : 0;
+    bottom : 0;
+}
+
+/* .file_item button {
+    position : absolute;
+    display : flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+.file_type {left : 17px;}
+.file_uploader {left : 270px;}
+.file_date {left : 375px;}
+.file_size {left : 578px;}
+.file_name {left : 68px;}
+.file_star {left : 654px;}
+.file_bin {left : 698px;}
+
+.twenty_size {
+    width : 20px;
+    height: 20px;
+}

@@ -1,0 +1,321 @@
+@import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css);
+
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+
+#contents {
+    overflow-y: scroll;
+    float: left;
+    width: 61%;
+    height: 90% ;
+    background-color: #EEF2F9;
+    /* display: flex; */
+    /* justify-content: center; */
+    /* flex-wrap: wrap; */
+    padding : 30px 20px;
+    
+}
+
+#contents_wrap {
+    height : 100%;
+    margin : 0 4.5%;
+    width : auto;
+    display: flex;
+    flex-direction : column;
+    justify-content: flex-start;
+}
+
+#fileStore {
+    width : 100%;
+    display :flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    
+}
+
+#fileAdd {
+    width : 100%;
+    height : 38px;
+    display :flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top : 50px;
+    position:relative;
+}
+
+
+
+.upload_input {
+    width : 100%;
+    height: 130px;
+    position: relative;
+    float:top;
+    margin:0;
+
+}
+
+.fileInput {
+    width : 100%;
+    height : 100%;
+    border : 2px dashed #267dff;
+    border-radius: 8px;
+    box-shadow: 0 0 6px #267dff;
+    cursor: pointer;
+    background-color:#ffffff;
+    
+
+    
+    
+}
+
+form input::file-selector-button {
+
+    background-color: #ffffff;;
+    border:0;
+    color: #BDBDBD;
+    font-weight:800;
+    font-size: 12px;
+    cursor: pointer;
+    position: absolute;
+    top: 60%;
+    left: 47.5%;
+    
+    
+
+}
+
+
+
+
+/*.upload_input .input[type="file"] {      
+
+    position: absolute;
+
+    width: 1px;
+
+    height: 1px;
+
+    padding: 0;
+
+    margin: -1px;
+
+    overflow: hidden;
+
+    clip:rect(0,0,0,0);
+
+    border: 0;
+
+}*/
+
+.upload_input .fileimg {
+    top: 20%;
+    left: 49.5%;
+    position: absolute;
+    border : none;
+    background-color : none;
+    cursor: pointer;
+
+
+
+}
+
+.upload_input .fileBtn {
+    display: block;
+    top: 80%;
+    left: 44%;
+    width : 15%;
+    height : 25%;
+    background-color: #267dff;
+    color : #ffffff;
+    border-radius: 13px;
+    font-size: 14px;
+    font-weight: 800;
+    position: absolute;
+    
+}
+
+#filesBoard {
+    margin-top : 90px;
+    width : 100%;
+    overflow: hidden;
+    /* display : flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap; */
+    
+}
+/* 딱 맞진 않음 */
+.FileContainer {
+    height : 58px;
+    width : 940px;
+    background-color: #ffffff;
+    /*border-radius: 10px;*/
+    border : 1px;
+    /*margin : 15px 9px;*/
+    /*float: left;*/
+    position: relative;
+    
+}
+
+/*.LinkContainer a {
+    height: 50%;
+    width : 100%;
+    
+}*/
+
+
+/*.upper_img {
+    width : 100%;
+    height : 105px;   
+}
+.preview_img {
+    width : 100%;
+    height : 100%;
+    object-fit: cover;
+}*/
+
+/*.bottom_white {
+    display: flex;
+    flex-direction: column;
+    margin-left : 10px;
+}*/
+
+.logo_title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+    margin : 10px 0;
+    /* margin-left : 10px; */
+    
+    
+}
+
+.logo_title div {
+    height: 30px;
+    width : 30px;
+    margin-right : 7px;
+    /* display : inline-block; */
+    /* display: ; */
+    /* justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap; */
+    position: relative;
+    
+    
+}
+
+.logo_title div img {
+    position: absolute;
+    align-items: center;
+    
+    top : 1.6vh;
+    left: 1vw;
+    width: 100%;
+    height : 100%;
+    /*position: relative;*/
+}
+
+
+.FileContainer .title {
+    
+    font-size: 16px;
+    font-weight: 800;
+    color : black;
+    border : none;
+    float:top;
+    /*margin-left:1.5vw;*/
+    background:none;
+    position: absolute;
+    float: left;
+    padding: 0;
+    background: none;
+    outline: none;
+    text-align: justify;
+    overflow:hidden;
+    
+    
+    
+}
+
+.FileContainer .filetitle {
+    font-size: 16px;
+    font-weight: 800;
+    color : black;
+    width: 30%;
+    height: 40%;
+    position: absolute;
+    border: 1px solid black;
+    margin-left: 4vw;
+    text-align: left
+    
+}
+
+
+.filetitle ::placeholder{
+    font-size: 16px;
+    font-weight: 800;
+    color : black;
+}
+
+.pageFile {
+    font-size: 16px;
+    font-weight: 400;
+    color : #828282;
+    position: absolute;
+    
+    margin-left: 1.5vw;
+    
+    text-align: justify;
+    
+    
+    
+    
+
+}
+
+
+.FileContainer .filebottom {
+    
+    
+
+    font-size: 12px;
+    font-weight: 400;
+    color : #828282;
+    width:100%;
+    height:50%;
+    position: absolute;
+    bottom: 1%;
+    text-align:left;
+    border: none;
+    margin-left: 4vw;
+    
+    overflow: hidden;
+    text-overflow: clip;
+    white-space:nowrap;
+    
+    
+    
+
+}
+
+
+.starimg  {
+    width : 40px;
+    height: 38px;
+    top: 10%;
+    left: 80%;
+    margin-right: 20%;
+    
+    
+}
+
+.trashimg {
+    
+    margin-left: 38px;
+    top: 10%;
+    left: 90%
+    
+}

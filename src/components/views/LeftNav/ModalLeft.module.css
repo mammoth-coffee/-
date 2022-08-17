@@ -1,0 +1,36 @@
+@import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css);
+
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+
+.popup {
+  position: fixed;
+  left:0;
+  right:0;
+  top:0;
+  bottom:0;
+  z-index:100;
+  background: rgba(0,0,0,0.6);
+  
+
+}
+
+.popup .popupdiv {
+  position: relative;
+  width: 516px;
+  height: 590px;
+  background: #fff;
+  margin-left: 600px;
+  margin-top: 165px;
+ 
+
+}
+
+
+.remove {
+  position: absolute;
+  top: 1px;
+  right: 6px;
+  cursor: pointer;
+
+}

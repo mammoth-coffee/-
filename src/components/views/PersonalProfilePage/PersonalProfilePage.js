@@ -3,7 +3,8 @@ import Avatar from 'react-avatar';
 import style from './PersonalProfilePage.module.css'
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
-
+import { useDispatch } from 'react-redux';
+import {personalimgUser} from '../../../_actions/user_action'
 
 
 
@@ -38,10 +39,12 @@ function PersonalProfilePage(props) {
     
 
     
+    
+    /*"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"*/
 
 
 
-
+    const Dispatch = useDispatch();
     const onChange = (e) => {
         if(e.target.files[0]){
                 setFile(e.target.files[0])
@@ -57,37 +60,31 @@ function PersonalProfilePage(props) {
                 }
             }
             reader.readAsDataURL(e.target.files[0])
-        }
 
     
-    const onSubmitHandler = (event) => {
     
-
-
-        event.preventDefault();
+        e.preventDefault();
         
-        /*let body = {
-            email : Email
-            
-        }*/
-            
-           
-        
-           /* Dispatch(loginUser(body))
+           Dispatch(personalimgUser())
             .then(response =>{
-              if(response.payload.loginSuccess) {
-                navigate('/')
+
+                sessionStorage.setItem('profile', response.payload.result.profile);
+
+              if(response.payload.data.code === 1000) {
+                console.log("확인111", response);
+                
               } else {
-                errorMsgRef.current.style = "visibility: visible"
+                console.log("확인222", response);
+                alert(response.payload.data.message);
                 // alert('error occur')
                 // alert('error on')
                 // console.log(errorMsgRef);
                 // errorMsgRef[0].style.display = 'block';
               }
-            })*/            
+            })        
     }
 
-    const navigate = useNavigate();
+    /*const navigate = useNavigate();
     useEffect(() => {
         axios.get("/api/hello").then((response) => {
             console.log(response);
@@ -102,7 +99,7 @@ function PersonalProfilePage(props) {
                 alert("로그아웃에 실패했습니다.");
             }
         });
-    };
+    };*/
 
 
 
@@ -114,9 +111,9 @@ return (
     <div id={style.contents}>
         <div id={style.contents_wrap}>
 
-            <div className={style.logout}>
+            {/*<div className={style.logout}>
                 <button className={style.logoutbtn} onClick={onClickHandler}>로그아웃</button>
-            </div>
+            </div>*/}
 
             <div className = {style.profilediv}>
                 <Avatar 
@@ -125,6 +122,7 @@ return (
                     style={{margin:50}} 
                     size={240} 
                     /*onClick={()=>{fileInput.current.click()}}*//>
+
             </div>
 
             <div id={style.usernamereal}>
@@ -132,14 +130,14 @@ return (
             </div>
 
             <div className = {style.personalbtn}>
-                <form method="post">
+                <form action="">
                     <label className={style.label} ref={fileInput} htmlFor="ImgProfile">
                         <div className={style.inner}>
-                            <p>프로필 이미지 변경</p>
+                            <p>프로필 이미지 선택</p>
                         </div> 
                     </label>
-                    <input id='ImgProfile' className = {style.ImgProfile} ref={fileInput} accept='image/jpg,impge/png,image/jpeg' type="file" name='profile_img' onChange={onChange} />
-                
+                    <input   id='ImgProfile' className = {style.ImgProfile} ref={fileInput} accept='image/jpg,impge/png,image/jpeg' type="file" name='profile_img' onChange={onChange} />
+                    
                 </form>
             </div>
 
@@ -177,7 +175,7 @@ return (
                     <p>사용자명</p>
                 </div>
                 <div className={style.nameform}>
-                    <form onSubmit={onSubmitHandler}>
+                    <form >
                         <div id={style.name}>
                             <input type="name" name="name"  className={style.nametxt} id={style.nameInput} value={Name} onChange={onNameHandler}/>
                         </div>
@@ -194,9 +192,9 @@ return (
                     <p>이메일</p>
                 </div>
                 <div className={style.emailform}>
-                    <form onSubmit={onSubmitHandler}>
+                    <form >
                         <div id={style.email}>
-                            <input type="email" name="email"  className={style.emailtxt} id={style.emailInput} value={Email} onChange={onEmailHandler}/>
+                            <input  name="email"  className={style.emailtxt} id={style.emailInput} value={Email} onChange={onEmailHandler}/>
                             
                         </div>
                         <div id = {style.buttonemail}>

@@ -1,5 +1,5 @@
 import Axios from 'axios';
-import { LOGIN_USER, REGISTER_USER, AUTH_USER, TEAM_USER } from './types'
+import { LOGIN_USER, REGISTER_USER, AUTH_USER, TEAM_USER, PERSONAL_IMG } from './types'
 import { ADD_LINK, TRASH_LINK, BMOFF_LINK, BMON_LINK, CHANGE_TITLE, ADD_FILE } from './types'
 
 export function loginUser(dataToSubmit) {
@@ -130,6 +130,19 @@ export function addFile(dataToSubmit) {
 
     return {
         type : ADD_FILE,
+        payload : request
+    }
+}
+
+export function personalimgUser(dataToSubmit) {
+
+    const userId = sessionStorage.getItem('userId');
+
+    const request = Axios.patch(`/member/edit/profile/${userId}`, dataToSubmit)
+    .then(response => response.data)
+
+    return {
+        type : PERSONAL_IMG,
         payload : request
     }
 }

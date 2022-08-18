@@ -44,17 +44,6 @@ function MainPage () {
                                 <button>팀 폴더</button>
                             </div>
 
-                            <div className={style.folderBoard}>
-                                
-                            {recentFolderListData.map((recentFolderData) => 
-                                <Folder key={recentFolderData.folderId} folderId={recentFolderData.folderId} 
-                                        folderName={recentFolderData.folderName} creatorId={recentFolderData.creatorId} 
-                                        lastModifiedDate={recentFolderData.lastModifiedDate} />)}
-                                {/* < Folder /> */}
-                                {/* < Folder /> */}
-                                {/* < Folder /> */}
-
-                            </div>
                     </div>
 
                     <div className={style.recent_file}>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios";
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+
 import style from "./RightNav.module.css"
 import {Outlet} from "react-router"
 import {teamUser} from '../../../_actions/user_action'
@@ -15,15 +15,15 @@ function RightNav() {
     
     const [teamListData, setTeamListData] = useState([]);
     const [noLoop, setNoLoop] = useState(false);
-
+    const userId = sessionStorage.getItem('userId');
 
     useEffect(() => {
         
-        axios.get(`http://3.37.214.20:8080/team/sessionStorage.getItem('userId')`)
+        axios.get(`http://3.37.214.20:8080/team/${userId}`)
 
         .then((response) => {
-            setTeamListData(response.payload.data.result)
-            console.log('useEffect', teamListData)
+            setTeamListData(response.data.result.teamInfoList)
+            console.log('useEffect', response)
             // res = ...response;
         })
         .catch((err) => console.log('err in useEffect', err))
@@ -45,14 +45,19 @@ function RightNav() {
     const [emails, setEmails] = useState([]);
     const [inputEmail, setInputEmail] = useState('');
     const [nextId, setNextId] = useState('');
-
+    
     const handleChange = e => setInputEmail(e.target.value);
+
+    
 
     const handleClick = () => {
         const newList = emails.concat({
-            id: nextId,
-            name: inputEmail
+            
+            id : nextId ,
+            memberEmail : inputEmail
+            
         });
+
         setNextId(nextId+1);
         setEmails(newList);
         setInputEmail('');
@@ -67,7 +72,7 @@ function RightNav() {
         <div key={email.id}>
             <div className={styled.EmailListItem}>
                 <button className={styled.removeemail} onClick={() => handleDelete(email.id)}>삭제</button>
-                <div className={styled.text}>{email.name}</div>
+                <div className={styled.text}>{email.memberEmail}</div>
             </div>
         </div>
     );
@@ -84,14 +89,9 @@ function RightNav() {
 
         let body = {
             
-            creatorId : sessionStorage.getItem('userId'),
-            teamName : Name,
-            members:[
-                {
-                    "memberEmail":"mksundu@gmail.com"
-                }
-            ]
-            
+            "creatorId" : sessionStorage.getItem('userId'),
+            "teamName" : Name,
+            "members": emails
 
         }
             

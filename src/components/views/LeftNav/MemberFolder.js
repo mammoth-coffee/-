@@ -1,16 +1,20 @@
-import React, { useState } from 'react'
+import React from 'react'
 import style from './LeftNav.module.css'
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"
+import MemberFolderItem from './MemberFolderItem'
 
-function MemberFolder(props) {
+function MemberFolder({ memberFolderData, noloop }) {
   
   return (
-    <li className={style.sub_folder}>
-        <Link to={'/linkstore'} state={{ folderId : props.folderId} }>
-            {props.folderName}
-        </Link>
-    </li>
+    <div id={style.sub_folder}>
+        {memberFolderData.map((myfolderData) => <MemberFolderItem name={myfolderData.folderName}  noLoop = {noloop[0]} setNoLoop = {noloop[1]}/>)}
+    </div>
   )
 }
 
 export default MemberFolder
+
+
+//props.folderName
+
+//name={myfolderData.folder_name}

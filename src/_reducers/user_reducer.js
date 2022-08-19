@@ -1,4 +1,4 @@
-import { LOGIN_USER, REGISTER_USER, AUTH_USER, TEAM_USER } from "../_actions/types";
+import { LOGIN_USER, REGISTER_USER, AUTH_USER, TEAM_USER, MY_FOLDER, TEAM_FOLDER } from "../_actions/types";
 import { ADD_LINK, TRASH_LINK, BMOFF_LINK, BMON_LINK, CHANGE_TITLE } from "../_actions/types";
 
 export default function (state = {}, action) {
@@ -19,6 +19,15 @@ export default function (state = {}, action) {
         // api : 2
         case TEAM_USER :
             return {...state, teammakeSuccess : action.payload}
+            break;
+
+        //api 3
+        case MY_FOLDER :
+            return {...state, myfolderSuccess : action.payload}
+            break;
+        
+        case TEAM_FOLDER :
+            return {...state, teamfolderSuccess : action.payload}
             break;
     
         // api : 6

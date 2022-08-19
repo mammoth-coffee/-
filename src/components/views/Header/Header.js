@@ -21,23 +21,13 @@ function Header() {
     const onClickBell = (event) => {
         setDropDown(dropDown === "block" ? "none" : "block")
     }
-    const userId = sessionStorage.getItem('userId');
+   
 
     const onClickHandler = (e) => {
         setText(e.target.value);
     
 
 
-        axios.get(`/search?word=${text}&${userId}`)
-        .then((response) => {
-            if (response.payload.code == 1000) {
-                navigate("/search");
-                console.log("확인", response);
-            } else {
-                console.log("확인222", response);
-                alert(response.payload.data.message);
-            }
-        });
     }
 
     
@@ -58,7 +48,7 @@ function Header() {
     
                 <div className={style.searching}>
                     <form >
-                        <input className={style.search_txt} type="text" value={text} placeholder="Search Contents" />
+                        <input className={style.search_txt} type="text"  placeholder="Search Contents" />
                         <button className={style.search_button} type="button" onClick={onClickHandler}>
                             <img src = "/img/searchLine.png" />
                         </button>

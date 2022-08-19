@@ -16,3 +16,7 @@ export const CHANGE_TITLE = 'change_title'
 
 // api : 4
 export const ADD_FILE = 'add_file'
+
+//api 3
+export const MY_FOLDER = 'my_folder'
+export const TEAM_FOLDER = 'team_folder'

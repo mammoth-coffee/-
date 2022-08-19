@@ -1,5 +1,5 @@
 import Axios from 'axios';
-import { LOGIN_USER, REGISTER_USER, AUTH_USER, TEAM_USER, PERSONAL_IMG } from './types'
+import { LOGIN_USER, REGISTER_USER, AUTH_USER, TEAM_USER, PERSONAL_IMG, MY_FOLDER ,TEAM_FOLDER} from './types'
 import { ADD_LINK, TRASH_LINK, BMOFF_LINK, BMON_LINK, CHANGE_TITLE, ADD_FILE } from './types'
 
 export function loginUser(dataToSubmit) {
@@ -143,6 +143,33 @@ export function personalimgUser(dataToSubmit) {
 
     return {
         type : PERSONAL_IMG,
+        payload : request
+    }
+}
+
+
+export function MyFolder(dataToSubmit) {
+    
+    const request = Axios.post('/folder', dataToSubmit);
+
+
+    request.then(response => response.data)
+
+    return {
+        type : MY_FOLDER,
+        payload : request
+    }
+}
+
+export function TeamFolder(dataToSubmit) {
+    
+    const request = Axios.post('/folder', dataToSubmit);
+
+
+    request.then(response => response.data)
+
+    return {
+        type : TEAM_FOLDER,
         payload : request
     }
 }

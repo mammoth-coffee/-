@@ -10,6 +10,8 @@ import TeamBoard from './TeamBoard';
 
 function RightNav() {
 
+    
+
     //const userId = sessionStorage.getItem('userId');
 
     
@@ -19,10 +21,13 @@ function RightNav() {
 
     useEffect(() => {
         
+        
         axios.get(`http://3.37.214.20:8080/team/${userId}`)
 
         .then((response) => {
-            setTeamListData(response.data.result.teamInfoList)
+            sessionStorage.setItem('teamId', response.payload.result.teaminfoList.teamId);
+
+            setTeamListData(response.data.result)
             console.log('useEffect', response)
             // res = ...response;
         })

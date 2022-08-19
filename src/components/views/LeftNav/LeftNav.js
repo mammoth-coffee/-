@@ -1,24 +1,31 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import MemberFolder from './MemberFolder'
+import { useDispatch } from 'react-redux';
 import style from './LeftNav.module.css'
-import ModalLeft from "./ModalLeft";
+import styled from './ModalLeft.module.css'
 import {Outlet} from "react-router"
-function LeftNav(props) {
+import {MyFolder} from '../../../_actions/user_action'
 
-    const {} =props;
-    const [popup, handlePopup] = useState(false);
+
+function LeftNav() {
+
+    
+    
 
     const [memberFolderData, setMemberFolderData] = useState([]);
-
+    const [noLoop, setNoLoop] = useState(false);
+    const userId = sessionStorage.getItem('userId');
+    
 
     useEffect(() => {
-        axios.get("/folder/member/1")
+        axios.get(`http://3.37.214.20:8080/folder/member/${userId}`)
         .then((response) => {
             setMemberFolderData(response.data.result)
+            console.log('useEffect', response)
         })
         .catch((err) => console.log('err in useEffect', err))
-    },[]);
+    },[noLoop]);
     // 페이지 로딩
 
     // wrap을 씌우면 안됨(?) : 색깔 변경이 좌우 양끝까지 해야함
@@ -45,6 +52,59 @@ function LeftNav(props) {
         setTextColor(textColor === "#4f4f4f" ? "#267DFF" : "#4f4f4f")
         setBoxBackColor(boxBackColor === "#fff" ? "#F6F9FD" : "#fff")
         toggleMenu();
+    }
+
+    const closeModal = () => {
+        handlePopup(false);
+    };
+
+    const [popup, handlePopup ] = useState(false);
+
+    /*모달 관련*/
+    const Dispatch = useDispatch();
+    
+    const [Name, setName] = useState("");
+
+    const onNameHandler = (event) => {
+        setName(event.currentTarget.value)
+    }
+
+
+
+    /*팀 생성하기 데이터 보내는*/
+    const onSubmitHandler =  (event) => {
+        event.preventDefault();
+        
+    
+        let body = {
+            
+            "folder_case" : "member",
+            "id" :sessionStorage.getItem('userId'),
+            "folder_name" : Name,
+            "creatorId":sessionStorage.getItem('userId')
+    
+    
+        }
+                
+        Dispatch(MyFolder(body))
+        .then(response =>{
+            
+
+            
+    
+            if(response.payload.data.code === 1000) {
+    
+                console.log("확인111", response);
+                setNoLoop(!noLoop);
+                    
+            } else {
+                console.log("확인222", response);
+                alert(response.payload.data.message);
+            
+            }
+        })
+            
+    
     }
 
     // if (window.location.pathname === '/login' || window.location.pathname === '/register' || window.location.pathname === '/findpassword' || window.location.pathname === '/resetpassword') return null;
@@ -82,19 +142,44 @@ function LeftNav(props) {
                         <button>
                             <img src="/img/common_img/plus_icon.svg" className={style.add_folder} onClick={() => { handlePopup(true);} }/>
                         </button>
-                        {popup && <ModalLeft onClose={handlePopup}/>}
+                        {popup && 
+                        <div className={styled.popup} >
+                            <div className={styled.popupdiv}>
+                                <div className={styled.remove} >
+                                    <img src="/img/common_img/removeImg.png"  onClick={closeModal}/>
+                                </div>
+                                <div className={styled.nameuser}>
+                                    <p>내폴더명</p>
+                                </div>
+                                <div className={styled.nameform}>
+                                    <form onSubmit={onSubmitHandler}>
+                                        <div id={styled.name}>
+                                            <input type="name" name="name"  className={styled.nametxt} id={styled.nameInput} value={Name} onChange={onNameHandler}/>
+                                        </div>
+                                        <div id = {styled.buttonname}>
+                                            <input type="submit" value="폴더 생성하기" id={styled.namebtn} className={styled.namebtn}/>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                 
+                        </div>
+                        
+                        
+                        
+                        }
 
                     </div>
-                        <ul className={style.sub_folderlist} id={isOpen ? style.show_menu : style.hide_menu}>
+                        <div className={style.sub_folderlist} id={isOpen ? style.show_menu : style.hide_menu}>
 
-                            {memberFolderData.map((folderData) => <MemberFolder key={folderData.folderId} folderId={folderData.folderId} folderName={folderData.folderName} />)}
+                            <MemberFolder memberFolderData={memberFolderData} noloop = {[noLoop, setNoLoop]} />
 
-                        </ul>
+                        </div>
                         
                     <div className={style.favorites}>
 
-                            <img src="/img/downarrow_navright.svg" className={style.down_arrow}/>
-                            {/* 이게 아래 화살표 */}
+                    
 
                             <img className={style.menu_img} src = "/img/common_img/star_line.svg" />
                             {/* fontawesome */}
@@ -108,8 +193,7 @@ function LeftNav(props) {
 
                     <div className={style.trashbin}>
 
-                            <img src="/img/downarrow_navright.svg" className={style.down_arrow}/>
-                            {/* 이게 아래 화살표 */}
+                            
 
                             <img className={style.menu_img} src = "/img/common_img/trashbin.svg" />
                             {/* fontawesome */}
